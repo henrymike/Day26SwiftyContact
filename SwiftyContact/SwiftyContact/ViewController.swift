@@ -17,6 +17,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var personsTableView :UITableView!
     
     
+    //MARK: Interactivity Methods
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let destController = segue.destinationViewController as! DetailViewController
+        if segue.identifier == "segueDetail" {
+            let indexPath = personsTableView.indexPathForSelectedRow!
+            let selectedPerson = personsArray[indexPath.row]
+            destController.selectedPerson = selectedPerson
+            personsTableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
+    }
+    
     //MARK: Table View Methods
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

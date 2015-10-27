@@ -38,6 +38,9 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="7Po-W5-xTw" kind="show" identifier="segueDetail" id="84X-FG-vpv"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -62,6 +65,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1057" y="237"/>
+        </scene>
+        <!--Person-->
+        <scene sceneID="LMb-Hk-ac0">
+            <objects>
+                <viewController id="7Po-W5-xTw" customClass="DetailViewController" customModule="SwiftyContact" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QLt-G2-n9f"/>
+                        <viewControllerLayoutGuide type="bottom" id="CWj-TN-fKL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7pU-Mt-ukp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Person" id="2OJ-kC-nZ8"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m5x-ML-dy9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1757" y="237"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZF2-5D-mCR">
