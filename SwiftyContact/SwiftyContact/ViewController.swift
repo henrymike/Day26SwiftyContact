@@ -21,7 +21,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let destController = segue.destinationViewController as! DetailViewController
-        if segue.identifier == "segueDetail" {
+        if segue.identifier == "segueEdit" {
             let indexPath = personsTableView.indexPathForSelectedRow!
             let selectedPerson = personsArray[indexPath.row]
             destController.selectedPerson = selectedPerson
