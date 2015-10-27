@@ -27,6 +27,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             destController.selectedPerson = selectedPerson
             personsTableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
+        else if segue.identifier == "segueAdd" {
+            destController.selectedPerson = nil
+        }
     }
     
     //MARK: Table View Methods
@@ -79,6 +82,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let firstPerson = personsArray.first
         print("Number of Persons:\(personsArray.count) First Record:\(firstPerson?.personFirstName)")
 
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(true)
+        personsArray = fetchPersons()!
+        personsTableView.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
