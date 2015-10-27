@@ -27,6 +27,12 @@ class DetailViewController: UIViewController {
     //MARK: Interactivity Methods
 
     @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
+        if selectedPerson == nil {
+            print("New")
+            let entityDescription :NSEntityDescription! = NSEntityDescription.entityForName("Persons", inManagedObjectContext: managedObjectContext)
+            let newPerson :Persons! = Persons(entity: entityDescription, insertIntoManagedObjectContext: managedObjectContext)
+            selectedPerson = newPerson
+        }
         selectedPerson?.personFirstName = firstNameTextField.text
         selectedPerson?.personLastName = lastNameTextField.text
         selectedPerson?.personStreet = streetTextField.text
@@ -67,12 +73,6 @@ class DetailViewController: UIViewController {
             zipTextField.text = selectedPerson?.personZip
             phoneTextField.text = selectedPerson?.personPhone
             emailTextField.text = selectedPerson?.personEmail
-        }
-        else {
-            print("New")
-            let entityDescription :NSEntityDescription! = NSEntityDescription.entityForName("Persons", inManagedObjectContext: managedObjectContext)
-            let newPerson :Persons! = Persons(entity: entityDescription, insertIntoManagedObjectContext: managedObjectContext)
-            selectedPerson = newPerson
         }
     }
 
