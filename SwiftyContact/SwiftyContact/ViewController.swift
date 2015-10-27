@@ -19,18 +19,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //MARK: Interactivity Methods
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let destController = segue.destinationViewController as! DetailViewController
-        if segue.identifier == "segueEdit" {
-            let indexPath = personsTableView.indexPathForSelectedRow!
-            let selectedPerson = personsArray[indexPath.row]
-            destController.selectedPerson = selectedPerson
-            personsTableView.deselectRowAtIndexPath(indexPath, animated: true)
-        }
-        else if segue.identifier == "segueAdd" {
-            destController.selectedPerson = nil
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            print("Row to delete:\(indexPath.row)")
+            let personToDelete = personsArray[indexPath.row]
+            managedObjectContext .deleteObject(personToDelete)
+            appDelegate.saveContext()
+            personsArray = fetchPersons()!
+            personsTableView.reloadData()
         }
     }
+    
+    
     
     //MARK: Table View Methods
     
@@ -69,6 +69,19 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             return tempArray
         } catch {
             return nil
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let destController = segue.destinationViewController as! DetailViewController
+        if segue.identifier == "segueEdit" {
+            let indexPath = personsTableView.indexPathForSelectedRow!
+            let selectedPerson = personsArray[indexPath.row]
+            destController.selectedPerson = selectedPerson
+            personsTableView.deselectRowAtIndexPath(indexPath, animated: true)
+        }
+        else if segue.identifier == "segueAdd" {
+            destController.selectedPerson = nil
         }
     }
     

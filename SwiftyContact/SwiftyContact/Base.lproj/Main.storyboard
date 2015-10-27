@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
     </dependencies>
     <scenes>
         <!--Contacts-->
@@ -128,11 +129,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Person" id="2OJ-kC-nZ8">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="fUD-Nq-r0X">
-                            <connections>
-                                <action selector="saveButtonPressed" destination="7Po-W5-xTw" id="TOC-Ka-yMo"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="save" id="fUD-Nq-r0X">
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="7Po-W5-xTw" id="glK-a1-lOM"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="trash" id="ksw-3i-C8M">
+                                <connections>
+                                    <action selector="deleteButtonPressed:" destination="7Po-W5-xTw" id="R88-ux-d9w"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="cityTextField" destination="dbr-CB-sao" id="Qz7-ss-T1b"/>

@@ -26,7 +26,7 @@ class DetailViewController: UIViewController {
     
     //MARK: Interactivity Methods
 
-    @IBAction func saveButtonPressed() {
+    @IBAction func saveButtonPressed(sender: UIBarButtonItem) {
         selectedPerson?.personFirstName = firstNameTextField.text
         selectedPerson?.personLastName = lastNameTextField.text
         selectedPerson?.personStreet = streetTextField.text
@@ -35,6 +35,11 @@ class DetailViewController: UIViewController {
         selectedPerson?.personZip = zipTextField.text
         selectedPerson?.personPhone = phoneTextField.text
         selectedPerson?.personEmail = emailTextField.text
+        saveAndPop()
+    }
+    
+    @IBAction func deleteButtonPressed(sender: UIBarButtonItem) {
+        managedObjectContext.deleteObject(selectedPerson!)
         saveAndPop()
     }
     
