@@ -40,7 +40,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        cell.textLabel!.text = personsArray[indexPath.row].personFirstName
+        cell.textLabel!.text = "\(personsArray[indexPath.row].personFirstName!) \(personsArray[indexPath.row].personLastName!)"
         return cell
     }
     
