@@ -24,6 +24,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var  emailTextField      :UITextField!
     @IBOutlet weak var  ratingsStackView    :UIStackView!
     
+//    var selectedRating : Int = 0
+    
     
     //MARK: Interactivity Methods
 
@@ -42,6 +44,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         selectedPerson?.personZip = zipTextField.text
         selectedPerson?.personPhone = phoneTextField.text
         selectedPerson?.personEmail = emailTextField.text
+        selectedPerson?.personRating = ratingsStackView.arrangedSubviews.count
+//        selectedPerson?.personRating = selectedRating
         saveAndPop()
     }
     
@@ -66,14 +70,12 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func increaseRatings(sender: UIButton) {
         print("Increase rating")
-        let ratingsImageView = UIImageView(image: UIImage(named: "star"))
-        ratingsImageView.contentMode = .ScaleAspectFit
         let ratingsCount = ratingsStackView.arrangedSubviews.count
         if ratingsCount < 5 {
-            ratingsStackView.insertArrangedSubview(ratingsImageView, atIndex: 0)
-            UIView.animateWithDuration(0.25) { () -> Void in
-                self.ratingsStackView.layoutIfNeeded()
-            }
+            addStar()
+//            self.selectedRating = ratingsCount + 1
+//            print("Current Rating:\(self.selectedRating)")
+            print("Current Rating:\(ratingsStackView.arrangedSubviews.count)")
         } else {
             print("Error")
         }
@@ -89,11 +91,34 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
             UIView.animateWithDuration(0.25) { () -> Void in
                 self.ratingsStackView.layoutIfNeeded()
             }
+//            self.selectedRating = ratingsCount - 1
+//            print("Current Rating:\(self.selectedRating)")
+            print("Current Rating:\(ratingsStackView.arrangedSubviews.count)")
         } else {
             print("Error")
         }
     }
     
+    func addStar() {
+        let ratingsImageView = UIImageView(image: UIImage(named: "star"))
+        ratingsImageView.contentMode = .ScaleAspectFit
+        ratingsStackView.insertArrangedSubview(ratingsImageView, atIndex: 0)
+        UIView.animateWithDuration(0.25) { () -> Void in
+            self.ratingsStackView.layoutIfNeeded()
+        }
+    }
+    
+//    func displayCurrentRating() {
+//        let ratingsImageView = UIImageView(image: UIImage(named: "star"))
+//        ratingsImageView.contentMode = .ScaleAspectFit
+//        let ratingsCount = selectedPerson?.personRating as! Int
+////        ratingsStackView.arrangedSubviews
+//        ratingsStackView.insertArrangedSubview(ratingsImageView, atIndex: ratingsCount)
+//        UIView.animateWithDuration(0.0) { () -> Void in
+//            self.ratingsStackView.layoutIfNeeded()
+//        }
+//    }
+
     
     //MARK: Life Cycle Methods
     
@@ -105,14 +130,21 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         super.viewWillAppear(true)
         if selectedPerson != nil {
             print("Edit")
-            firstNameTextField.text = selectedPerson?.personFirstName
-            lastNameTextField.text = selectedPerson?.personLastName
-            streetTextField.text = selectedPerson?.personStreet
-            cityTextField.text = selectedPerson?.personCity
-            stateTextField.text = selectedPerson?.personState
-            zipTextField.text = selectedPerson?.personZip
-            phoneTextField.text = selectedPerson?.personPhone
-            emailTextField.text = selectedPerson?.personEmail
+            firstNameTextField.text = selectedPerson!.personFirstName
+            lastNameTextField.text = selectedPerson!.personLastName
+            streetTextField.text = selectedPerson!.personStreet
+            cityTextField.text = selectedPerson!.personCity
+            stateTextField.text = selectedPerson!.personState
+            zipTextField.text = selectedPerson!.personZip
+            phoneTextField.text = selectedPerson!.personPhone
+            emailTextField.text = selectedPerson!.personEmail
+            print("Rating:\(selectedPerson?.personRating)")
+            
+//            selectedRating = selectedPerson!.personRating! as Int
+            
+            for var x = 0; x < Int(selectedPerson!.personRating!); x++ {
+                addStar()
+            }
         }
     }
 
