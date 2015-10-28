@@ -59,11 +59,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Contacts" id="Mrf-Zh-FYe">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ghL-68-Wxl">
-                            <connections>
-                                <segue destination="7Po-W5-xTw" kind="show" identifier="segueAdd" id="Au7-FO-w8w"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="add" id="ghL-68-Wxl">
+                                <connections>
+                                    <segue destination="7Po-W5-xTw" kind="show" identifier="segueAdd" id="Au7-FO-w8w"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="bookmarks" id="EmX-xu-QRG">
+                                <connections>
+                                    <action selector="showContactList:" destination="BYZ-38-t0r" id="wXf-qd-zdt"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="personsTableView" destination="vDN-Sj-CdK" id="Qzs-kV-CvI"/>
