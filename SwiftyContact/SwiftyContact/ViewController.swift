@@ -30,31 +30,43 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func contactPicker(picker: CNContactPickerViewController, didSelectContact contact: CNContact) {
+        let entityDescription :NSEntityDescription = NSEntityDescription.entityForName("Persons", inManagedObjectContext: managedObjectContext)!
+        let currentPerson :Persons! = Persons(entity: entityDescription, insertIntoManagedObjectContext: managedObjectContext)
+        
         print("First Name:\(contact.givenName) Last Name:\(contact.familyName)")
+        currentPerson.personFirstName = contact.givenName
+        currentPerson.personLastName = contact.familyName
         
         for phone in contact.phoneNumbers as [CNLabeledValue] {
             print("Phone: " + (phone.value as! CNPhoneNumber).stringValue)
+            currentPerson.personPhone = (phone.value as! CNPhoneNumber).stringValue
         }
         
         for email in contact.emailAddresses as [CNLabeledValue] {
             print("Email: " + (email.value as! String))
+            currentPerson.personEmail = email.value as? String
         }
         
         for street in contact.postalAddresses as [CNLabeledValue] {
             print("Street: " + (street.value as! CNPostalAddress).street)
+            currentPerson.personStreet = (street.value as! CNPostalAddress).street
         }
         
         for city in contact.postalAddresses as [CNLabeledValue] {
             print("City: " + (city.value as! CNPostalAddress).city)
+            currentPerson.personCity = (city.value as! CNPostalAddress).city
         }
         
         for state in contact.postalAddresses as [CNLabeledValue] {
             print("State: " + (state.value as! CNPostalAddress).state)
+            currentPerson.personState = (state.value as! CNPostalAddress).state
         }
         
         for zip in contact.postalAddresses as [CNLabeledValue] {
             print("Zip: " + (zip.value as! CNPostalAddress).postalCode)
+            currentPerson.personZip = (zip.value as! CNPostalAddress).postalCode
         }
+        appDelegate.saveContext()
     }
     
     
