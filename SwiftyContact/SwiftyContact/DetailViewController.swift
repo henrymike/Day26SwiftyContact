@@ -24,8 +24,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var  emailTextField      :UITextField!
     @IBOutlet weak var  ratingsStackView    :UIStackView!
     
-//    var selectedRating : Int = 0
-    
     
     //MARK: Interactivity Methods
 
@@ -36,16 +34,15 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
             let newPerson :Persons! = Persons(entity: entityDescription, insertIntoManagedObjectContext: managedObjectContext)
             selectedPerson = newPerson
         }
-        selectedPerson?.personFirstName = firstNameTextField.text
-        selectedPerson?.personLastName = lastNameTextField.text
-        selectedPerson?.personStreet = streetTextField.text
-        selectedPerson?.personCity = cityTextField.text
-        selectedPerson?.personState = stateTextField.text
-        selectedPerson?.personZip = zipTextField.text
-        selectedPerson?.personPhone = phoneTextField.text
-        selectedPerson?.personEmail = emailTextField.text
-        selectedPerson?.personRating = ratingsStackView.arrangedSubviews.count
-//        selectedPerson?.personRating = selectedRating
+        selectedPerson!.personFirstName = firstNameTextField.text
+        selectedPerson!.personLastName = lastNameTextField.text
+        selectedPerson!.personStreet = streetTextField.text
+        selectedPerson!.personCity = cityTextField.text
+        selectedPerson!.personState = stateTextField.text
+        selectedPerson!.personZip = zipTextField.text
+        selectedPerson!.personPhone = phoneTextField.text
+        selectedPerson!.personEmail = emailTextField.text
+        selectedPerson!.personRating = ratingsStackView.arrangedSubviews.count
         saveAndPop()
     }
     
@@ -73,8 +70,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         let ratingsCount = ratingsStackView.arrangedSubviews.count
         if ratingsCount < 5 {
             addStar()
-//            self.selectedRating = ratingsCount + 1
-//            print("Current Rating:\(self.selectedRating)")
             print("Current Rating:\(ratingsStackView.arrangedSubviews.count)")
         } else {
             print("Error")
@@ -91,8 +86,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
             UIView.animateWithDuration(0.25) { () -> Void in
                 self.ratingsStackView.layoutIfNeeded()
             }
-//            self.selectedRating = ratingsCount - 1
-//            print("Current Rating:\(self.selectedRating)")
             print("Current Rating:\(ratingsStackView.arrangedSubviews.count)")
         } else {
             print("Error")
@@ -107,17 +100,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
             self.ratingsStackView.layoutIfNeeded()
         }
     }
-    
-//    func displayCurrentRating() {
-//        let ratingsImageView = UIImageView(image: UIImage(named: "star"))
-//        ratingsImageView.contentMode = .ScaleAspectFit
-//        let ratingsCount = selectedPerson?.personRating as! Int
-////        ratingsStackView.arrangedSubviews
-//        ratingsStackView.insertArrangedSubview(ratingsImageView, atIndex: ratingsCount)
-//        UIView.animateWithDuration(0.0) { () -> Void in
-//            self.ratingsStackView.layoutIfNeeded()
-//        }
-//    }
 
     
     //MARK: Life Cycle Methods
@@ -138,10 +120,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
             zipTextField.text = selectedPerson!.personZip
             phoneTextField.text = selectedPerson!.personPhone
             emailTextField.text = selectedPerson!.personEmail
-            print("Rating:\(selectedPerson?.personRating)")
-            
-//            selectedRating = selectedPerson!.personRating! as Int
-            
             for var x = 0; x < Int(selectedPerson!.personRating!); x++ {
                 addStar()
             }
@@ -152,7 +130,4 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         super.didReceiveMemoryWarning()
     }
     
-
-
-
 }
