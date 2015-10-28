@@ -79,7 +79,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        cell.textLabel!.text = "\(personsArray[indexPath.row].personFirstName!) \(personsArray[indexPath.row].personLastName!)"
+        let person = personsArray[indexPath.row]
+        cell.textLabel!.text = "\(person.personFirstName!) \(person.personLastName!)"
+        cell.detailTextLabel!.text = "Rating: \(person.personRating!)"
+        
         return cell
     }
     
