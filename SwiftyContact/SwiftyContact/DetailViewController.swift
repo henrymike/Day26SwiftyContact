@@ -9,7 +9,7 @@
 import UIKit
 import CoreData
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UITextFieldDelegate {
     
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let managedObjectContext :NSManagedObjectContext! = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
@@ -53,6 +53,12 @@ class DetailViewController: UIViewController {
         appDelegate.saveContext()
         navigationController?.popViewControllerAnimated(true)
     }
+    
+//    func checkForEmpty() {
+//        if firstNameTextField. > 0 {
+//            return nil
+//        }
+//    }
     
     
     //MARK: Life Cycle Methods

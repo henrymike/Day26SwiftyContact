@@ -13,9 +13,9 @@
 		55C738E91BDFD61400CAA072 /* SwiftyContact.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55C738E71BDFD61400CAA072 /* SwiftyContact.xcdatamodeld */; };
 		55C738EB1BDFD61400CAA072 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55C738EA1BDFD61400CAA072 /* Assets.xcassets */; };
 		55C738EE1BDFD61400CAA072 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55C738EC1BDFD61400CAA072 /* LaunchScreen.storyboard */; };
-		55C738F71BDFD6C500CAA072 /* Persons+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C738F51BDFD6C500CAA072 /* Persons+CoreDataProperties.swift */; };
-		55C738F81BDFD6C500CAA072 /* Persons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C738F61BDFD6C500CAA072 /* Persons.swift */; };
 		55C738FB1BDFDF9500CAA072 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55C738FA1BDFDF9500CAA072 /* DetailViewController.swift */; };
+		55E013F11BE1354300E5814E /* Persons+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E013EF1BE1354300E5814E /* Persons+CoreDataProperties.swift */; };
+		55E013F21BE1354300E5814E /* Persons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E013F01BE1354300E5814E /* Persons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,9 +27,10 @@
 		55C738EA1BDFD61400CAA072 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		55C738ED1BDFD61400CAA072 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		55C738EF1BDFD61400CAA072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		55C738F51BDFD6C500CAA072 /* Persons+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Persons+CoreDataProperties.swift"; path = "SwiftyContact/Persons+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		55C738F61BDFD6C500CAA072 /* Persons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Persons.swift; path = SwiftyContact/Persons.swift; sourceTree = "<group>"; };
 		55C738FA1BDFDF9500CAA072 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		55E013EC1BE133CC00E5814E /* SwiftyContact 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SwiftyContact 2.xcdatamodel"; sourceTree = "<group>"; };
+		55E013EF1BE1354300E5814E /* Persons+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Persons+CoreDataProperties.swift"; path = "SwiftyContact/Persons+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		55E013F01BE1354300E5814E /* Persons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Persons.swift; path = SwiftyContact/Persons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,8 +78,8 @@
 		55C738F91BDFD6CA00CAA072 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				55C738F51BDFD6C500CAA072 /* Persons+CoreDataProperties.swift */,
-				55C738F61BDFD6C500CAA072 /* Persons.swift */,
+				55E013EF1BE1354300E5814E /* Persons+CoreDataProperties.swift */,
+				55E013F01BE1354300E5814E /* Persons.swift */,
 				55C738E71BDFD61400CAA072 /* SwiftyContact.xcdatamodeld */,
 			);
 			name = Data;
@@ -156,12 +157,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				55C738F71BDFD6C500CAA072 /* Persons+CoreDataProperties.swift in Sources */,
+				55E013F21BE1354300E5814E /* Persons.swift in Sources */,
 				55C738E31BDFD61400CAA072 /* ViewController.swift in Sources */,
 				55C738E11BDFD61400CAA072 /* AppDelegate.swift in Sources */,
 				55C738FB1BDFDF9500CAA072 /* DetailViewController.swift in Sources */,
-				55C738F81BDFD6C500CAA072 /* Persons.swift in Sources */,
 				55C738E91BDFD61400CAA072 /* SwiftyContact.xcdatamodeld in Sources */,
+				55E013F11BE1354300E5814E /* Persons+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +310,7 @@
 				55C738F41BDFD61400CAA072 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
@@ -316,9 +318,10 @@
 		55C738E71BDFD61400CAA072 /* SwiftyContact.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				55E013EC1BE133CC00E5814E /* SwiftyContact 2.xcdatamodel */,
 				55C738E81BDFD61400CAA072 /* SwiftyContact.xcdatamodel */,
 			);
-			currentVersion = 55C738E81BDFD61400CAA072 /* SwiftyContact.xcdatamodel */;
+			currentVersion = 55E013EC1BE133CC00E5814E /* SwiftyContact 2.xcdatamodel */;
 			name = SwiftyContact.xcdatamodeld;
 			path = SwiftyContact/SwiftyContact.xcdatamodeld;
 			sourceTree = "<group>";
