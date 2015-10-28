@@ -86,30 +86,36 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jv-VO-P1v">
-                                <rect key="frame" x="0.0" y="64" width="236" height="64"/>
+                                <rect key="frame" x="0.0" y="64" width="236" height="80"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eDM-dc-wCG">
-                                        <rect key="frame" x="20" y="8" width="196" height="30"/>
+                                        <rect key="frame" x="20" y="8" width="196" height="38"/>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lF-cf-6tA">
-                                        <rect key="frame" x="136" y="34" width="80" height="30"/>
+                                        <rect key="frame" x="136" y="42" width="80" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="▲ Rating"/>
+                                        <connections>
+                                            <action selector="increaseRatings:" destination="7Po-W5-xTw" eventType="touchUpInside" id="Zu6-cv-5Er"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6PX-f0-Kgb">
-                                        <rect key="frame" x="20" y="34" width="80" height="30"/>
+                                        <rect key="frame" x="20" y="42" width="80" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="▼ Rating"/>
+                                        <connections>
+                                            <action selector="decreaseRatings:" destination="7Po-W5-xTw" eventType="touchUpInside" id="gkt-5c-Px3"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="GYO-vL-O3f"/>
+                                    <constraint firstAttribute="height" constant="80" id="GYO-vL-O3f"/>
                                     <constraint firstAttribute="width" constant="236" id="NET-dP-ojV"/>
                                 </constraints>
                             </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XcV-uP-XvV">
-                                <rect key="frame" x="20" y="131" width="196" height="30"/>
+                                <rect key="frame" x="20" y="152" width="196" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="M0X-kF-CPX"/>
                                     <constraint firstAttribute="width" constant="196" id="rrN-qN-v3f"/>
@@ -121,7 +127,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5c3-qD-nNI">
-                                <rect key="frame" x="20" y="169" width="196" height="30"/>
+                                <rect key="frame" x="20" y="190" width="196" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="QsX-bN-BAS"/>
                                     <constraint firstAttribute="width" constant="196" id="ss7-dH-N3t"/>
@@ -133,7 +139,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Street" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LGB-VX-59h">
-                                <rect key="frame" x="20" y="207" width="196" height="30"/>
+                                <rect key="frame" x="20" y="228" width="196" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="gbx-jg-xps"/>
                                     <constraint firstAttribute="width" constant="196" id="vLV-5N-kY8"/>
@@ -145,7 +151,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="City" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dbr-CB-sao">
-                                <rect key="frame" x="20" y="245" width="196" height="30"/>
+                                <rect key="frame" x="20" y="266" width="196" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="196" id="5eX-2V-LPm"/>
                                     <constraint firstAttribute="height" constant="30" id="njy-yo-35k"/>
@@ -157,7 +163,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="State" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1gw-am-v4E">
-                                <rect key="frame" x="20" y="283" width="196" height="30"/>
+                                <rect key="frame" x="20" y="304" width="196" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Zno-Ug-tmv"/>
                                     <constraint firstAttribute="width" constant="196" id="fla-Ze-PBR"/>
@@ -169,7 +175,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Zip" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Wj-Nx-X41">
-                                <rect key="frame" x="20" y="321" width="196" height="30"/>
+                                <rect key="frame" x="20" y="342" width="196" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Cx0-as-lOX"/>
                                     <constraint firstAttribute="width" constant="196" id="zOQ-Wu-lUu"/>
@@ -181,7 +187,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eWT-EY-nNA">
-                                <rect key="frame" x="20" y="359" width="196" height="30"/>
+                                <rect key="frame" x="20" y="380" width="196" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="196" id="Ehh-Aq-haE"/>
                                     <constraint firstAttribute="height" constant="30" id="rEI-GQ-c44"/>
@@ -193,7 +199,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TAh-fP-z4K">
-                                <rect key="frame" x="20" y="397" width="196" height="30"/>
+                                <rect key="frame" x="20" y="418" width="196" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="196" id="e4p-rY-sZT"/>
                                     <constraint firstAttribute="height" constant="30" id="giM-P1-4up"/>
@@ -213,14 +219,14 @@
                             <constraint firstItem="1gw-am-v4E" firstAttribute="top" secondItem="dbr-CB-sao" secondAttribute="bottom" constant="8" id="JXN-7s-gnA"/>
                             <constraint firstAttribute="leadingMargin" secondItem="XcV-uP-XvV" secondAttribute="leading" id="Kgm-qo-u8G"/>
                             <constraint firstAttribute="trailingMargin" secondItem="eWT-EY-nNA" secondAttribute="trailing" id="M0Q-QZ-vAw"/>
-                            <constraint firstItem="XcV-uP-XvV" firstAttribute="top" secondItem="2jv-VO-P1v" secondAttribute="bottom" constant="3" id="MeR-D0-7rS"/>
+                            <constraint firstItem="XcV-uP-XvV" firstAttribute="top" secondItem="2jv-VO-P1v" secondAttribute="bottom" constant="8" id="MeR-D0-7rS"/>
                             <constraint firstAttribute="leadingMargin" secondItem="1gw-am-v4E" secondAttribute="leading" id="OIC-OD-HPN"/>
                             <constraint firstItem="dbr-CB-sao" firstAttribute="top" secondItem="LGB-VX-59h" secondAttribute="bottom" constant="8" id="QfW-6v-zgQ"/>
                             <constraint firstAttribute="leadingMargin" secondItem="5c3-qD-nNI" secondAttribute="leading" id="RBx-oh-d4J"/>
                             <constraint firstAttribute="leadingMargin" secondItem="dbr-CB-sao" secondAttribute="leading" id="SGi-qD-gEU"/>
                             <constraint firstAttribute="leadingMargin" secondItem="TAh-fP-z4K" secondAttribute="leading" id="SY3-Rt-EtH"/>
                             <constraint firstAttribute="leadingMargin" secondItem="LGB-VX-59h" secondAttribute="leading" id="Wet-CZ-Kcy"/>
-                            <constraint firstItem="XcV-uP-XvV" firstAttribute="top" secondItem="QLt-G2-n9f" secondAttribute="bottom" constant="67" id="XHj-Cd-oUl"/>
+                            <constraint firstItem="XcV-uP-XvV" firstAttribute="top" secondItem="QLt-G2-n9f" secondAttribute="bottom" constant="88" id="XHj-Cd-oUl"/>
                             <constraint firstAttribute="leadingMargin" secondItem="eWT-EY-nNA" secondAttribute="leading" id="XTd-9f-FJx"/>
                             <constraint firstItem="9Wj-Nx-X41" firstAttribute="top" secondItem="1gw-am-v4E" secondAttribute="bottom" constant="8" id="ZlV-11-ZrK"/>
                             <constraint firstItem="eWT-EY-nNA" firstAttribute="top" secondItem="QLt-G2-n9f" secondAttribute="bottom" constant="21" id="bRT-TP-az8"/>
@@ -262,6 +268,7 @@
                         <outlet property="firstNameTextField" destination="XcV-uP-XvV" id="Ouz-Em-5SD"/>
                         <outlet property="lastNameTextField" destination="5c3-qD-nNI" id="li3-Aj-Dhs"/>
                         <outlet property="phoneTextField" destination="eWT-EY-nNA" id="k1d-hy-rx2"/>
+                        <outlet property="ratingsStackView" destination="eDM-dc-wCG" id="ASz-bn-oi6"/>
                         <outlet property="stateTextField" destination="1gw-am-v4E" id="ylM-3J-ZpZ"/>
                         <outlet property="streetTextField" destination="LGB-VX-59h" id="T9c-Z8-8c0"/>
                         <outlet property="zipTextField" destination="9Wj-Nx-X41" id="2OV-rY-1dc"/>

@@ -22,6 +22,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var  zipTextField        :UITextField!
     @IBOutlet weak var  phoneTextField      :UITextField!
     @IBOutlet weak var  emailTextField      :UITextField!
+    @IBOutlet weak var  ratingsStackView    :UIStackView!
     
     
     //MARK: Interactivity Methods
@@ -59,6 +60,39 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
 //            return nil
 //        }
 //    }
+    
+    
+    //MARK: Stack View Methods
+    
+    @IBAction func increaseRatings(sender: UIButton) {
+        print("Increase rating")
+        let ratingsImageView = UIImageView(image: UIImage(named: "star"))
+        ratingsImageView.contentMode = .ScaleAspectFit
+        let ratingsCount = ratingsStackView.arrangedSubviews.count
+        if ratingsCount < 5 {
+            ratingsStackView.insertArrangedSubview(ratingsImageView, atIndex: 0)
+            UIView.animateWithDuration(0.25) { () -> Void in
+                self.ratingsStackView.layoutIfNeeded()
+            }
+        } else {
+            print("Error")
+        }
+    }
+    
+    @IBAction func decreaseRatings(sender: UIButton) {
+        print("Decrease rating")
+        let ratingsCount = ratingsStackView.arrangedSubviews.count
+        if ratingsCount > 0 {
+            let ratingToRemove = ratingsStackView.arrangedSubviews[ratingsCount - 1]
+            ratingsStackView.removeArrangedSubview(ratingToRemove)
+            ratingToRemove.removeFromSuperview()
+            UIView.animateWithDuration(0.25) { () -> Void in
+                self.ratingsStackView.layoutIfNeeded()
+            }
+        } else {
+            print("Error")
+        }
+    }
     
     
     //MARK: Life Cycle Methods
