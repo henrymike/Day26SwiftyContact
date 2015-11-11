@@ -16,8 +16,27 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
     let managedObjectContext :NSManagedObjectContext! = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     var personsArray = [Persons]()
+    var sectionsArray = [String]()
     var contactStore = CNContactStore()
     @IBOutlet weak var personsTableView :UITableView!
+    
+    
+    
+    func createSectionArray() -> [String] {
+        var categorySet = Set<String>()
+        for contact in personsArray {
+            let lastnameFirstChar = String(contact.personLastName!.characters.first!)
+            categorySet.insert(lastnameFirstChar)
+        }
+        return Array(categorySet)
+    }
+    
+    func filterLastNameByCategory(category: String) -> [Persons] {
+        let filteredPersons = personsArray.filter({
+            String($0.personLastName!.characters.first!) == category
+        })
+        return filteredPersons
+    }
     
     
     //MARK: Interactivity Methods
@@ -73,17 +92,33 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     //MARK: Table View Methods
     
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        print("Sections: \(sectionsArray.count)")
+        return sectionsArray.count
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return personsArray.count
+        return filterLastNameByCategory(sectionsArray[section]).count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        let person = personsArray[indexPath.row]
-        cell.textLabel!.text = "\(person.personFirstName!) \(person.personLastName!)"
-        cell.detailTextLabel!.text = "Rating: \(person.personRating!)"
+        let lastName = filterLastNameByCategory(sectionsArray[indexPath.section])[indexPath.row].personLastName
+        let firstName = filterLastNameByCategory(sectionsArray[indexPath.section])[indexPath.row].personFirstName
+        let rating = filterLastNameByCategory(sectionsArray[indexPath.section])[indexPath.row].personRating
+        cell.textLabel!.text = "\(firstName!) \(lastName!)"
+        cell.detailTextLabel!.text = "Rating: \(rating!)"
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionsArray[section]
+    }
+    
+    func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return "Count: \(filterLastNameByCategory(sectionsArray[section]).count)"
     }
     
     // swipe to delete
@@ -175,6 +210,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 //        let firstPerson = personsArray.first
 //        print("Number of Persons:\(personsArray.count) First Record:\(firstPerson?.personFirstName)")
         checkContactAuthorizationStatus(CNEntityType.Contacts)
+        sectionsArray = createSectionArray()
 
     }
     
