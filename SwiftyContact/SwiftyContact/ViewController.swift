@@ -21,25 +21,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var personsTableView :UITableView!
     
     
-    
-    func createSectionArray() -> [String] {
-        var categorySet = Set<String>()
-        for contact in personsArray {
-            let lastnameFirstChar = String(contact.personLastName!.characters.first!)
-            categorySet.insert(lastnameFirstChar)
-        }
-        return Array(categorySet)
-    }
-    
-    func filterLastNameByCategory(category: String) -> [Persons] {
-        let filteredPersons = personsArray.filter({
-            String($0.personLastName!.characters.first!) == category
-        })
-        return filteredPersons
-    }
-    
-    
-    //MARK: Interactivity Methods
+    //MARK: - Interactivity Methods
     
     @IBAction func showContactList(sender: UIBarButtonItem) {
         print("Contacts button pressed")
@@ -90,11 +72,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     
     
-    //MARK: Table View Methods
+    //MARK: - Table View Methods
     
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        print("Sections: \(sectionsArray.count)")
         return sectionsArray.count
     }
     
@@ -159,21 +140,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     
-    //MARK: Core Data Methods
-    
-//    func tempAddRecords() {
-//        let entityDescription :NSEntityDescription = NSEntityDescription.entityForName("Persons", inManagedObjectContext: managedObjectContext)!
-//        let currentPerson :Persons! = Persons(entity: entityDescription, insertIntoManagedObjectContext: managedObjectContext)
-//        currentPerson.personFirstName = "John"
-//        currentPerson.personLastName = "Smith"
-//        currentPerson.personStreet = "123 Main Street"
-//        currentPerson.personCity = "Washington"
-//        currentPerson.personState = "DC"
-//        currentPerson.personZip = "22202"
-//        currentPerson.personPhone = "843-234-6532"
-//        currentPerson.personEmail = "email@gmail.com"
-//        appDelegate.saveContext()
-//    }
+    //MARK: - Core Data Methods
     
     func fetchPersons() -> [Persons]? {
         let fetchRequest :NSFetchRequest = NSFetchRequest(entityName: "Persons")
@@ -190,7 +157,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let destController = segue.destinationViewController as! DetailViewController
         if segue.identifier == "segueEdit" {
             let indexPath = personsTableView.indexPathForSelectedRow!
-//            let selectedPerson = personsArray[indexPath.row]
             let selectedPerson = filterLastNameByCategory(sectionsArray[indexPath.section])[indexPath.row]
             destController.selectedPerson = selectedPerson
             personsTableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -200,15 +166,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         }
     }
     
+    func createSectionArray() -> [String] {
+        var categorySet = Set<String>()
+        for contact in personsArray {
+            let lastNameFirstChar = String(contact.personLastName!.characters.first!)
+            categorySet.insert(lastNameFirstChar)
+        }
+        return Array(categorySet).sort()
+    }
     
-    //MARK: Life Cycle Methods
+    func filterLastNameByCategory(category: String) -> [Persons] {
+        let filteredPersons = personsArray.filter({
+            String($0.personLastName!.characters.first!) == category
+        })
+        return filteredPersons
+    }
+    
+    
+    //MARK: - Life Cycle Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tempAddRecords()
         personsArray = fetchPersons()!
-//        let firstPerson = personsArray.first
-//        print("Number of Persons:\(personsArray.count) First Record:\(firstPerson?.personFirstName)")
         checkContactAuthorizationStatus(CNEntityType.Contacts)
         sectionsArray = createSectionArray()
 
@@ -225,6 +204,4 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     }
 
-
 }
-
