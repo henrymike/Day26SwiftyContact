@@ -124,8 +124,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     // swipe to delete
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
-            print("Row to delete:\(indexPath.row)")
-            let personToDelete = personsArray[indexPath.row]
+            let personToDelete = filterLastNameByCategory(sectionsArray[indexPath.section])[indexPath.row]
             managedObjectContext .deleteObject(personToDelete)
             appDelegate.saveContext()
             personsArray = fetchPersons()!
@@ -191,7 +190,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let destController = segue.destinationViewController as! DetailViewController
         if segue.identifier == "segueEdit" {
             let indexPath = personsTableView.indexPathForSelectedRow!
-            let selectedPerson = personsArray[indexPath.row]
+//            let selectedPerson = personsArray[indexPath.row]
+            let selectedPerson = filterLastNameByCategory(sectionsArray[indexPath.section])[indexPath.row]
             destController.selectedPerson = selectedPerson
             personsTableView.deselectRowAtIndexPath(indexPath, animated: true)
         }
